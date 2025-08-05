@@ -7,12 +7,12 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name="o2security",
     version="0.1.1", # افزایش نسخه
-    author="sina",
-    author_email="sina@unknownmsv",
+    author="Your Name",
+    author_email="your.email@example.com",
     description="A simple library for securely managing tokens and secrets.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/unknownmsv/o2security",
+    url="https://github.com/yourusername/o2security",
     
     # پیدا کردن تمام پکیج‌ها (شامل o2security و webapp)
     packages=find_packages(),
@@ -23,7 +23,7 @@ setup(
     # تعریف دستور خط فرمان
     entry_points={
         'console_scripts': [
-            'o2tokman = run_webapp:main',
+            'o2tokman = webapp.cli:main',
         ],
     },
     
