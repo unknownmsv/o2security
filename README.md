@@ -2,7 +2,7 @@
 # 🛡️ O₂Security - Secure Secrets Management for Python
 
 ![PyPI](https://img.shields.io/pypi/v/o2security)
-![Python](https://img.shields.io/badge/python-3.8+-blue)
+![Python](https://img.shields.io/badge/python-3.12-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![GitHub Stars](https://img.shields.io/github/stars/unknownmsv/o2security)
 
@@ -87,3 +87,4 @@ MIT - See [LICENSE](LICENSE) for details.
 ---
 
 *Built with ❤️ and 🐍 by [Unknownmsv](https://github.com/unknownmsv)*
+
