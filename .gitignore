@@ -1,3 +1,5 @@
 __pycache__
 /webapp/__pycache__
 /o2security/__pycache__
+o2security.egg-info
+build
