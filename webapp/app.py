@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from pathlib import Path
 import sys
 
-# افزودن مسیر ریشه پروژه به sys.path برای پیدا کردن ماژول o2security
+# Add project root path to sys.path to find o2security module
 sys.path.append(str(Path(__file__).parent.parent))
 from o2security.core import encrypt, decrypt, get_master_key, PROJECTS_DIR
 
@@ -14,11 +14,11 @@ app.secret_key = os.urandom(24)
 MASTER_KEY = get_master_key()
 
 def get_project_path(project_name: str) -> Path:
-    """مسیر فایل JSON یک پروژه را برمی‌گرداند."""
+    """Returns the JSON file path for a project."""
     return PROJECTS_DIR / f"{project_name}.json"
 
 def load_project_data(project_name: str) -> dict:
-    """داده‌های یک پروژه را از فایل می‌خواند."""
+    """Loads project data from file."""
     file_path = get_project_path(project_name)
     if file_path.exists():
         with open(file_path, 'r') as f:
@@ -26,7 +26,7 @@ def load_project_data(project_name: str) -> dict:
     return {}
 
 def save_project_data(project_name: str, data: dict):
-    """داده‌های یک پروژه را در فایل ذخیره می‌کند."""
+    """Saves project data to file."""
     file_path = get_project_path(project_name)
     with open(file_path, 'w') as f:
         json.dump(data, f, indent=2)
@@ -37,9 +37,9 @@ def index():
         project_name = request.form.get('project_name')
         if project_name and not get_project_path(project_name).exists():
             save_project_data(project_name, {})
-            flash(f'پروژه "{project_name}" با موفقیت ساخته شد!', 'success')
+            flash(f'Project "{project_name}" created successfully!', 'success')
         else:
-            flash('نام پروژه نامعتبر است یا پروژه از قبل وجود دارد.', 'danger')
+            flash('Invalid project name or project already exists.', 'danger')
         return redirect(url_for('index'))
     
     projects = [p.stem for p in PROJECTS_DIR.glob('*.json')]
@@ -58,9 +58,9 @@ def project_view(project_name):
             data = load_project_data(project_name)
             data[token_key] = encrypted_value
             save_project_data(project_name, data)
-            flash(f'توکن "{token_key}" با موفقیت اضافه شد.', 'success')
+            flash(f'Token "{token_key}" added successfully.', 'success')
         else:
-            flash('نام و مقدار توکن نمی‌تواند خالی باشد.', 'danger')
+            flash('Token name and value cannot be empty.', 'danger')
         return redirect(url_for('project_view', project_name=project_name))
 
     project_data = load_project_data(project_name)

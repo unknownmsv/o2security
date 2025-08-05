@@ -6,15 +6,15 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import padding
 import base64
 
-# مسیر ذخیره‌سازی کلید اصلی و داده‌ها
+# Paths for storing master key and data
 DATA_DIR = Path.home() / ".o2security"
 KEY_FILE = DATA_DIR / "master.key"
 PROJECTS_DIR = DATA_DIR / "projects"
 
 def get_master_key() -> bytes:
     """
-    کلید اصلی را از متغیر محیطی یا فایل محلی می‌خواند.
-    اگر هیچکدام وجود نداشته باشد، یک کلید جدید ساخته و ذخیره می‌کند.
+    Reads master key from environment variable or local file.
+    If neither exists, creates and stores a new key.
     """
     DATA_DIR.mkdir(exist_ok=True)
     
@@ -25,15 +25,15 @@ def get_master_key() -> bytes:
     if KEY_FILE.exists():
         return KEY_FILE.read_bytes()
     else:
-        print("⚠️ کلید اصلی یافت نشد. یک کلید جدید در حال ساخت است...")
-        print(f"🔑 مسیر ذخیره‌سازی کلید: {KEY_FILE}")
-        print("🚨 این فایل را در جای امنی نگهداری کنید و از آن پشتیبان تهیه کنید!")
+        print("⚠️ Master key not found. Creating a new one...")
+        print(f"🔑 Key storage path: {KEY_FILE}")
+        print("🚨 Keep this file secure and make backups!")
         new_key = os.urandom(32)  # 256-bit key
         KEY_FILE.write_bytes(new_key)
         return new_key
 
 def encrypt(data: str, key: bytes) -> str:
-    """یک رشته را با استفاده از AES-256-GCM رمزنگاری می‌کند."""
+    """Encrypts a string using AES-256-GCM."""
     iv = os.urandom(12)  # GCM recommends a 12-byte IV
     encryptor = Cipher(
         algorithms.AES(key),
@@ -42,11 +42,11 @@ def encrypt(data: str, key: bytes) -> str:
     ).encryptor()
     
     ciphertext = encryptor.update(data.encode('utf-8')) + encryptor.finalize()
-    # IV و tag را به همراه متن رمز شده ذخیره می‌کنیم
+    # Store IV and tag along with ciphertext
     return base64.urlsafe_b64encode(iv + encryptor.tag + ciphertext).decode('utf-8')
 
 def decrypt(encrypted_data_b64: str, key: bytes) -> str:
-    """یک رشته رمزنگاری شده با AES-256-GCM را رمزگشایی می‌کند."""
+    """Decrypts an AES-256-GCM encrypted string."""
     try:
         encrypted_data = base64.urlsafe_b64decode(encrypted_data_b64)
         iv = encrypted_data[:12]
@@ -61,8 +61,8 @@ def decrypt(encrypted_data_b64: str, key: bytes) -> str:
         
         return (decryptor.update(ciphertext) + decryptor.finalize()).decode('utf-8')
     except Exception as e:
-        print(f"خطا در رمزگشایی: {e}")
+        print(f"Decryption error: {e}")
         return "DECRYPTION_ERROR"
 
-# اطمینان از وجود پوشه‌ها هنگام ایمپورت شدن ماژول
+# Ensure directories exist when module is imported
 PROJECTS_DIR.mkdir(parents=True, exist_ok=True)

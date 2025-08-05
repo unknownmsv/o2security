@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پروژه: {{ project_name }}</title>
+    <title>Project: {{ project_name }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -13,9 +13,9 @@
 </head>
 <body class="bg-gray-900 text-white">
     <div class="container mx-auto p-8">
-        <a href="{{ url_for('index') }}" class="text-cyan-400 hover:text-cyan-300 mb-8 inline-block"><i class="fas fa-arrow-right ml-2"></i> بازگشت به لیست پروژه‌ها</a>
+        <a href="{{ url_for('index') }}" class="text-cyan-400 hover:text-cyan-300 mb-8 inline-block"><i class="fas fa-arrow-right ml-2"></i> Back to Projects</a>
         <header class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-white">پروژه: <span class="text-cyan-400">{{ project_name }}</span></h1>
+            <h1 class="text-4xl font-bold text-white">Project: <span class="text-cyan-400">{{ project_name }}</span></h1>
         </header>
 
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -29,24 +29,24 @@
         {% endwith %}
 
         <div class="bg-gray-800 p-6 rounded-xl shadow-lg mb-8">
-            <h2 class="text-2xl font-semibold mb-4 text-cyan-300">افزودن توکن جدید</h2>
+            <h2 class="text-2xl font-semibold mb-4 text-cyan-300">Add New Token</h2>
             <form action="{{ url_for('project_view', project_name=project_name) }}" method="POST" class="space-y-4">
-                <input type="text" name="token_key" placeholder="نام توکن (مثلا: DISCORD_TOKEN)" class="w-full bg-gray-700 text-white p-3 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500" required>
-                <textarea name="token_value" placeholder="مقدار توکن" class="w-full bg-gray-700 text-white p-3 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500" rows="3" required></textarea>
+                <input type="text" name="token_key" placeholder="Token name (e.g., DISCORD_TOKEN)" class="w-full bg-gray-700 text-white p-3 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500" required>
+                <textarea name="token_value" placeholder="Token value" class="w-full bg-gray-700 text-white p-3 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500" rows="3" required></textarea>
                 <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
-                    <i class="fas fa-save mr-2"></i> ذخیره توکن
+                    <i class="fas fa-save mr-2"></i> Save Token
                 </button>
             </form>
         </div>
 
         <div>
-            <h2 class="text-2xl font-semibold mb-4 text-cyan-300">توکن‌های ذخیره شده</h2>
+            <h2 class="text-2xl font-semibold mb-4 text-cyan-300">Saved Tokens</h2>
             <div class="bg-gray-800 rounded-xl shadow-lg overflow-hidden">
                 <table class="min-w-full">
                     <thead class="bg-gray-700">
                         <tr>
-                            <th class="py-3 px-6 text-right font-semibold">نام توکن</th>
-                            <th class="py-3 px-6 text-right font-semibold">مقدار رمزنگاری شده (Encrypted)</th>
+                            <th class="py-3 px-6 text-right font-semibold">Token Name</th>
+                            <th class="py-3 px-6 text-right font-semibold">Encrypted Value</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-700">
@@ -57,7 +57,7 @@
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="2" class="text-center py-8 text-gray-500">هیچ توکنی در این پروژه ذخیره نشده است.</td>
+                            <td colspan="2" class="text-center py-8 text-gray-500">No tokens saved in this project.</td>
                         </tr>
                     {% endfor %}
                     </tbody>

@@ -9,26 +9,26 @@ class TokenManager:
         self._current_project_name = None
 
     def select_project(self, project_name: str):
-        """یک پروژه را برای خواندن توکن‌ها انتخاب می‌کند."""
+        """Selects a project to read tokens from."""
         project_file = PROJECTS_DIR / f"{project_name}.json"
         if not project_file.exists():
-            raise FileNotFoundError(f"پروژه '{project_name}' یافت نشد. آیا آن را در داشبورد ساخته‌اید؟")
+            raise FileNotFoundError(f"Project '{project_name}' not found. Did you create it in the dashboard?")
         
         with open(project_file, 'r') as f:
             self._current_project_data = json.load(f)
         self._current_project_name = project_name
-        print(f"✅ پروژه '{project_name}' با موفقیت انتخاب شد.")
+        print(f"✅ Project '{project_name}' selected successfully.")
 
     def get(self, token_name: str) -> str:
-        """یک توکن را از پروژه انتخاب شده، رمزگشایی کرده و برمی‌گرداند."""
+        """Decrypts and returns a token from the selected project."""
         if self._current_project_data is None:
-            raise Exception("هیچ پروژه‌ای انتخاب نشده است. ابتدا از متد `select_project` استفاده کنید.")
+            raise Exception("No project selected. Use `select_project` first.")
         
         encrypted_value = self._current_project_data.get(token_name)
         if encrypted_value is None:
-            raise KeyError(f"توکن '{token_name}' در پروژه '{self._current_project_name}' یافت نشد.")
+            raise KeyError(f"Token '{token_name}' not found in project '{self._current_project_name}'.")
             
         return decrypt(encrypted_value, self._master_key)
 
-# ساخت یک نمونه از کلاس برای استفاده آسان در سطح ماژول
+# Create an instance for easy module-level usage
 tokman = TokenManager()
