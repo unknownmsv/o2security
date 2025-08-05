@@ -1,33 +1,32 @@
-# install.py
 import subprocess
 import sys
 
 def install_package():
     """
-    کتابخانه O₂Security را با استفاده از pip در محیط فعلی پایتون نصب می‌کند.
+    Installs the O₂Security library using pip in the current Python environment.
     """
     try:
-        print("🚀 در حال نصب کتابخانه O₂Security...")
+        print("🚀 Installing O₂Security library...")
         
-        # استفاده از sys.executable برای اطمینان از استفاده از مفسر پایتون صحیح
-        # دستور 'pip install .' پکیج موجود در همین پوشه را نصب می‌کند
+        # Using sys.executable to ensure using the correct Python interpreter
+        # The 'pip install .' command installs the package in the current directory
         command = [sys.executable, "-m", "pip", "install", "."]
         
-        # اجرای دستور
+        # Execute the command
         result = subprocess.run(command, check=True, capture_output=True, text=True)
         
-        print("\n--- خروجی نصب ---")
+        print("\n--- Installation Output ---")
         print(result.stdout)
-        print("------------------")
+        print("--------------------------")
         
-        print("\n✅ کتابخانه O₂Security با موفقیت نصب شد!")
-        print("حالا می‌توانید با 'from o2security import tokman' از آن استفاده کنید.")
+        print("\n✅ O₂Security library installed successfully!")
+        print("You can now use it with 'from o2security import tokman'")
 
     except subprocess.CalledProcessError as e:
-        print("\n❌ خطا در هنگام نصب:")
+        print("\n❌ Installation error:")
         print(e.stderr)
     except FileNotFoundError:
-        print("\n❌ خطا: دستور 'pip' یافت نشد. لطفاً از نصب بودن پایتون و pip اطمینان حاصل کنید.")
+        print("\n❌ Error: 'pip' command not found. Please ensure Python and pip are installed.")
 
 if __name__ == "__main__":
     install_package()

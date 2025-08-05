@@ -1,4 +1,3 @@
-# setup.py
 from setuptools import setup, find_packages
 
 with open("README.md", "r", encoding="utf-8") as fh:
@@ -6,21 +5,21 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="o2security",
-    version="0.1.1", # افزایش نسخه
-    author="Your Name",
-    author_email="your.email@example.com",
+    version="0.1.1",  # Version bump
+    author="sina",
+    author_email="sina@unknownmsv.ir",
     description="A simple library for securely managing tokens and secrets.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/o2security",
+    url="https://github.com/unknownmsv/o2security",
     
-    # پیدا کردن تمام پکیج‌ها (شامل o2security و webapp)
+    # Find all packages (including o2security and webapp)
     packages=find_packages(),
     
-    # لحاظ کردن فایل‌های غیر پایتونی (مانند HTML)
+    # Include non-Python files (like HTML templates)
     include_package_data=True,
     
-    # تعریف دستور خط فرمان
+    # Define command line interface
     entry_points={
         'console_scripts': [
             'o2tokman = webapp.cli:main',
@@ -34,7 +33,7 @@ setup(
     ],
     python_requires='>=3.7',
     
-    # اضافه کردن Flask به نیازمندی‌های اصلی
+    # Add Flask to main requirements
     install_requires=[
         'cryptography',
         'python-dotenv',

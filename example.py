@@ -2,43 +2,43 @@ import discord
 from o2security.tokman import tokman
 from discord.ext import commands
 
-# تنظیمات اولیه
+# Initial setup
 PROJECT_NAME = "test"
-TARGET_USER_ID = 1146057264969556018  # آیدی کاربر مورد نظر
+TARGET_USER_ID = 1146057264969556018  # Target user ID
 
-# انتخاب پروژه و دریافت توکن
+# Select project and get token
 try:
     tokman.select_project(PROJECT_NAME)
     DISCORD_TOKEN = tokman.get("DISCORD_TOKEN")
     
-    # ایجاد ربات
+    # Create bot instance
     intents = discord.Intents.default()
     intents.message_content = True
     bot = commands.Bot(command_prefix='!', intents=intents)
 
     @bot.event
     async def on_ready():
-        print(f'وارد شدیم به عنوان {bot.user}')
+        print(f'Logged in as {bot.user}')
         
         try:
-            # پیدا کردن کاربر هدف
+            # Find target user
             user = await bot.fetch_user(TARGET_USER_ID)
             
-            # ارسال پیام
+            # Send message
             await user.send("hi")
-            print(f"پیام به {user.name} ارسال شد")
+            print(f"Message sent to {user.name}")
             
         except discord.NotFound:
-            print("کاربر پیدا نشد!")
+            print("User not found!")
         except discord.Forbidden:
-            print("اجازه ارسال پیام نداریم")
+            print("Missing permissions to send message")
         except Exception as e:
-            print(f"خطای ناشناخته: {e}")
+            print(f"Unknown error: {e}")
         finally:
             await bot.close()
 
-    # اجرای ربات
+    # Run the bot
     bot.run(DISCORD_TOKEN)
 
 except Exception as e:
-    print(f"خطا در دریافت توکن: {e}")
+    print(f"Error getting token: {e}")
