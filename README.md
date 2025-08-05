@@ -3,7 +3,7 @@
 
 ![PyPI](https://img.shields.io/pypi/v/o2security)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
+![License](https://img.shields.io/badge/Apache-2.0-license-green)
 ![GitHub Stars](https://img.shields.io/github/stars/unknownmsv/o2security)
 
 A simple and secure library for managing tokens, API keys, and other secrets in your Python projects. Stop hardcoding secrets and start managing them securely with a local, encrypted vault and a user-friendly web dashboard.
@@ -82,9 +82,10 @@ If you find O₂Security useful, please consider:
 
 ## 📜 License
 
-MIT - See [LICENSE](LICENSE) for details.
+Apache-2.0 license - See [LICENSE](LICENSE) for details.
 
 ---
 
 *Built with ❤️ and 🐍 by [Unknownmsv](https://github.com/unknownmsv)*
+
 
