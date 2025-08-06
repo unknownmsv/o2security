@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="o2security",
-    version="0.1.1",  # Version bump
+    version="0.2.0",  # Version bump
     author="sina",
     author_email="sina@unknownmsv.ir",
     description="A simple library for securely managing tokens and secrets.",
