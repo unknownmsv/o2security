@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O₂Security - Dashboard</title>
+    <title>O₂Security - AI Projects</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Using a Persian font for better readability -->
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Vazirmatn', sans-serif; }
@@ -15,8 +14,8 @@
 <body class="bg-gray-900 text-white">
     <div class="container mx-auto p-8">
         <header class="text-center mb-12">
-            <h1 class="text-5xl font-bold text-cyan-400">O₂Security</h1>
-            <p class="text-xl text-gray-400 mt-2">Secure Management Dashboard</p>
+            <h1 class="text-5xl font-bold text-teal-400">O₂Security AI Studio</h1>
+            <p class="text-xl text-gray-400 mt-2">Secure AI Model Management</p>
         </header>
 
         <!-- Flash Messages -->
@@ -29,39 +28,38 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-
-        <!-- Navigation between Tokens and AI -->
+        
+        <!-- Navigation -->
         <div class="flex justify-center gap-4 mb-8">
-             <a href="{{ url_for('index') }}" class="bg-cyan-600 text-white font-bold py-3 px-8 rounded-lg transition-colors">
+             <a href="{{ url_for('index') }}" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg transition-colors">
                 <i class="fas fa-key mr-2"></i> Token Projects
             </a>
-            <a href="{{ url_for('ai_dashboard') }}" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg transition-colors">
+            <a href="{{ url_for('ai_dashboard') }}" class="bg-teal-600 text-white font-bold py-3 px-8 rounded-lg transition-colors">
                 <i class="fas fa-robot mr-2"></i> AI Projects
             </a>
         </div>
 
-
-        <!-- Create New Token Project -->
+        <!-- Create New AI Project -->
         <div class="bg-gray-800 p-6 rounded-xl shadow-lg mb-8">
-            <h2 class="text-2xl font-semibold mb-4 text-cyan-300">Create New Token Project</h2>
-            <form action="{{ url_for('index') }}" method="POST" class="flex items-center gap-4">
-                <input type="text" name="project_name" placeholder="Project name (e.g., discord-bot)" class="w-full bg-gray-700 text-white p-3 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500" required>
-                <button type="submit" class="bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+            <h2 class="text-2xl font-semibold mb-4 text-teal-300">Create New AI Project</h2>
+            <form action="{{ url_for('ai_dashboard') }}" method="POST" class="flex items-center gap-4">
+                <input type="text" name="project_name" placeholder="AI project name (e.g., my-chatbot)" class="w-full bg-gray-700 text-white p-3 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+                <button type="submit" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
                     <i class="fas fa-plus mr-2"></i> Create
                 </button>
             </form>
         </div>
 
-        <!-- Existing Token Projects -->
+        <!-- Existing AI Projects -->
         <div>
-            <h2 class="text-2xl font-semibold mb-4 text-cyan-300">Existing Token Projects</h2>
+            <h2 class="text-2xl font-semibold mb-4 text-teal-300">Existing AI Projects</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {% for project in projects %}
-                <a href="{{ url_for('project_view', project_name=project) }}" class="block bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 hover:scale-105 transition-all">
-                    <h3 class="text-xl font-bold text-white"><i class="fas fa-folder text-cyan-400 mr-3"></i>{{ project }}</h3>
+                <a href="{{ url_for('ai_project_view', project_name=project) }}" class="block bg-gray-800 p-6 rounded-xl shadow-lg hover:bg-gray-700 hover:scale-105 transition-all">
+                    <h3 class="text-xl font-bold text-white"><i class="fas fa-brain text-teal-400 mr-3"></i>{{ project }}</h3>
                 </a>
                 {% else %}
-                <p class="text-gray-500">No token projects created yet.</p>
+                <p class="text-gray-500">No AI projects created yet.</p>
                 {% endfor %}
             </div>
         </div>
