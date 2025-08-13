@@ -8,7 +8,13 @@
 
 A simple and secure library for managing tokens, API keys, and other secrets in your Python projects. Stop hardcoding secrets and start managing them securely with a local, encrypted vault and a user-friendly web dashboard.
 
+Dashboard review:
+
 ![Dashboard Preview](https://dl.donutmsv.ir/Screenshot_2025-08-13-16-12-25-699_com.android.chrome.png)
+
+AI dashboard review:
+
+![AI review](https://dl.donutmsv.ir/Screenshot_2025-08-13-16-12-42-434_com.android.chrome.png)
 
 ## ✨ Key Features
 
@@ -87,6 +93,7 @@ Apache-2.0 license - See [LICENSE](LICENSE) for details.
 ---
 
 *Built with ❤️ and 🐍 by [Unknownmsv](https://github.com/unknownmsv)*
+
 
 
 
