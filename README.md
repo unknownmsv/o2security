@@ -37,7 +37,7 @@ pip install o2security
 
 ### 1. Launch the Dashboard
 ```bash
-o2tokman
+oxygen
 ```
 Access at: `http://127.0.0.1:5001`
 
@@ -93,6 +93,7 @@ Apache-2.0 license - See [LICENSE](LICENSE) for details.
 ---
 
 *Built with ❤️ and 🐍 by [Unknownmsv](https://github.com/unknownmsv)*
+
 
 
 
