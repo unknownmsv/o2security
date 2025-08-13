@@ -8,7 +8,7 @@
 
 A simple and secure library for managing tokens, API keys, and other secrets in your Python projects. Stop hardcoding secrets and start managing them securely with a local, encrypted vault and a user-friendly web dashboard.
 
-![Dashboard Preview](https://example.com/path/to/dashboard-screenshot.png)
+![Dashboard Preview](https://sinamsv.storage.c2.liara.space/Screenshot_2025-08-06-16-10-15-119_com.android.chrome.png)
 
 ## ✨ Key Features
 
@@ -72,7 +72,7 @@ graph TD
 ## 📚 Full Documentation
 
 For advanced usage and API reference, visit:  
-[o2security.readthedocs.io](https://o2security.readthedocs.io)
+[project.donutmsv.ir](https://project.donutmsv.ir/projects/o2security)
 
 ## 💖 Support the Project
 
@@ -87,6 +87,10 @@ Apache-2.0 license - See [LICENSE](LICENSE) for details.
 ---
 
 *Built with ❤️ and 🐍 by [Unknownmsv](https://github.com/unknownmsv)*
+
+
+
+
 
 
 
